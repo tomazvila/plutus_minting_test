@@ -37,8 +37,8 @@ mkPolicy utxo _ ctx = validate
 
     validate :: Bool
     validate = case flattenValue $ txInfoMint info of
-       [(_, tn, amt)] -> amt == (-1) && amt == 1
-       _              -> False
+       [(_, _, amt)] -> (amt == 1 && hasUTxO) || amt == (-1)
+       _             -> False
 
 policy :: TxOutRef -> Scripts.MintingPolicy
 policy utxo = mkMintingPolicyScript $
