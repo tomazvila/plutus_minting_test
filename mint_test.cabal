@@ -1,0 +1,67 @@
+Cabal-Version:      2.4
+Name:               mint-test
+Version:            0.1.0.0
+Build-Type:          Simple
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     SimpleOffChain
+                       MintingNft
+  build-depends:       aeson
+                     , base ^>=4.14.1.0
+                     , bytestring
+                     , cardano-api
+                     , cardano-crypto-class
+                     , cardano-ledger-core
+                     , cardano-ledger-shelley
+                     , cardano-wallet-core
+                     , containers
+                     , data-default
+                     , freer-extras
+                     , openapi3
+                     , playground-common
+                     , plutus-contract
+                     , plutus-ledger
+                     , plutus-ledger-api
+                     , plutus-ledger-constraints
+                     , plutus-pab
+                     , plutus-tx-plugin
+                     , plutus-tx
+                     , plutus-use-cases
+                     , prettyprinter
+                     , serialise
+                     , text
+  default-language:    Haskell2010
+  ghc-options:         -Wall -fobject-code -fno-ignore-interface-pragmas -fno-omit-interface-pragmas -fno-strictness -fno-spec-constr -fno-specialise
+
+executable trace
+  main-is: EmulatorTracingTesting.hs
+  hs-source-dirs:      app
+  ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       aeson
+                     , base ^>=4.14.1.0
+                     , bytestring
+                     , cardano-api
+                     , cardano-crypto-class
+                     , cardano-ledger-core
+                     , cardano-ledger-shelley
+                     , cardano-wallet-core
+                     , containers
+                     , data-default
+                     , freer-extras
+                     , playground-common
+                     , plutus-contract
+                     , plutus-ledger
+                     , plutus-ledger-api
+                     , plutus-ledger-constraints
+                     , plutus-pab
+                     , plutus-tx-plugin
+                     , plutus-tx
+                     , plutus-use-cases
+                     , prettyprinter
+                     , serialise
+                     , text
+                     , lens
+                     , time
+                     , openapi3
+                     , mint-test
