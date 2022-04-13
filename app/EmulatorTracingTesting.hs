@@ -35,7 +35,7 @@ main :: IO ()
 main = runEmulatorTraceIO' def emCfg $ do
           let w1 = knownWallet 1
           w1 <- activateContractWallet w1 endpoints
-          callEndpoint @"lock" w1 ()
+          callEndpoint @"mint" w1 ()
           void $ waitNSlots 2
 
 collateralValue :: Value

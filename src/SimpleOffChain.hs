@@ -45,11 +45,10 @@ import qualified Plutus.Contract.StateMachine as Constraints
 import Ledger (unitRedeemer)
 
 type TestingSchema =
-            Endpoint "lock" ()
-        .\/ Endpoint "unlock" ()
+            Endpoint "mint" ()
 
-lock :: AsContractError e => Contract w s e ()
-lock = do
+mint :: AsContractError e => Contract w s e ()
+mint = do
     oref <- getUnspentOutput -- Contract w s e TxOutRef
     o    <- fromJust <$> Contract.txOutFromRef oref
     pkh  <- Contract.ownPaymentPubKeyHash
@@ -78,5 +77,5 @@ lock = do
 endpoints :: Contract () TestingSchema Text ()
 endpoints = awaitPromise proc >> endpoints
   where
-    proc = lock'
-    lock'   = endpoint @"lock" $ const lock
+    proc = mint'
+    mint'   = endpoint @"mint" $ const mint
